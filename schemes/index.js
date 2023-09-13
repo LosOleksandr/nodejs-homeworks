@@ -1,7 +1,7 @@
-const contactValidationScheme = require("./contactValidationScheme");
-const contactFavoriteValidationScheme = require("./contactFavoriteValidationScheme");
+const contactShemes = require("./contacts");
+const userSchemes = require("./users");
 
 module.exports = {
-  contactValidationScheme,
-  contactFavoriteValidationScheme,
+  contactShemes,
+  userSchemes,
 };
