@@ -10,7 +10,7 @@ const checkAuthToken = async (req, res, next) => {
 
   const [header, token] = authorization.split(" ");
 
-  if (header !== "Bearer") {
+  if (header !== "Bearer" || !token) {
     throw httpError(401, "Not authorized");
   }
 
