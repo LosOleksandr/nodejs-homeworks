@@ -1,8 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { mongooseError } = require("../utils");
-
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const phoneRegex = /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/;
+const { regex } = require("../utils");
 
 const contactScheme = new Schema(
   {
@@ -13,16 +11,20 @@ const contactScheme = new Schema(
     email: {
       type: String,
       required: [true, "Set email for contact"],
-      match: [emailRegex, "Invalid email format"],
+      match: [regex.emailRegex, "Invalid email format"],
     },
     phone: {
       type: String,
       required: [true, "Set phone number for contact"],
-      match: [phoneRegex, "Invalid phone number format"],
+      match: [regex.phoneRegex, "Invalid phone number format"],
     },
     favorite: {
       type: Boolean,
       default: false,
+    },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "user",
     },
   },
   {
