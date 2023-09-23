@@ -23,6 +23,7 @@ const userScheme = new Schema(
       enum: subscriptions,
       default: "free",
     },
+    avatarUrl: String,
     token: String,
   },
   { versionKey: false, timestamps: true }
